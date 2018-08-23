@@ -1,17 +1,29 @@
 #!/bin/sh
-# $Id: ~/.xinitrc wandsas 2018/01/03
+# $Id: ~/.xinitrc wandsas 2018/08/23
 
-# Keyboard
-# German keyboard variants: nodeadkeys, deadacute, deadgraveacute
-# Some convenient options are: terminate:ctrl_alt_bksp, ctrl:nocaps, grp:shift_caps_toggle, grp:menu_toggle, grp_led:scroll
-# See man pages for setxkbmap and xkeyboard-config for more details
+# Keyboard XkbVariants (german)
+#   nodeadkeys
+#   deadacute
+#   deadgraveacute
+#
+# Keyboard XkbOptions
+#   terminate:ctrl_alt_bksp
+#   ctrl:nocaps
+#   grp:shift_caps_toggle
+#   grp:menu_toggle
+#   grp_led:scroll
+#
+# See man pages for setxkbmap and xkeyboard-config for more details.
+
 setxkbmap \
     -model pc105 \
     -layout de \
     -variant deadgraveacute \
     -option terminate:ctrl_alt_bksp
 
+
 [ -s ~/.Xresources ] && xrdb -load ~/.Xresources
+
 
 # Fonts
 for dir in /usr/share/fonts/* /usr/local/share/fonts/* ~/.local/share/fonts/*; do
@@ -19,6 +31,7 @@ for dir in /usr/share/fonts/* /usr/local/share/fonts/* ~/.local/share/fonts/*; d
 done
 unset dir
 xset fp rehash
+
 
 # Mouse speed
 ### fast
@@ -65,4 +78,4 @@ case "${1:-$(tty)}" in
         ;;
 esac
 
-# vim:fenc=utf-8:ft=sh:
+m# vim:fenc=utf-8:ft=sh:
